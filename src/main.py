@@ -3,7 +3,6 @@ from frota import *
 
 def sim_carro(carro: Carro):
     print('1- Ligar motor')
-
     print('2- Desligar motor')
     print('3- Acelerar')
 
@@ -29,19 +28,23 @@ if __name__ == "__main__":
     nm_modelo = input('Digite o modelo: ')
     nm_marca = input('Digite a marca: ')
     nm_cor = input('Digite a cor: ')
+    litros = float(input('Digite o nivel do tank: '))
+    cm = float(input('Digite o consumo medio: '))
 
-    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, motor=False)
+    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, False, litros, cm)
 
     print('Cadastre o carro 2')
     nm_modelo = input('Digite o modelo: ')
     nm_marca = input('Digite a marca: ')
     nm_cor = input('Digite a cor: ')
+    litros = float(input('Digite o nivel do tank: '))
+    cm = float(input('Digite o consumo medio: '))
 
-    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, motor=False)
+    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, False,litros,cm)
     '''
     Controlando 2 carro até ele atingir 10000 Km
     '''
-    while carro1.odometro < 300 and carro2.odometro < 300:
+    while carro1.odometro < 300 and carro2.odometro < 300 and (carro1.tanque > 0 or carro2.tanque):
         try:
             op_carro = 0
             while op_carro not in (1, 2):
