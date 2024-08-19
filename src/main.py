@@ -3,6 +3,7 @@ from frota import *
 
 def sim_carro(carro: Carro):
     print('1- Ligar motor')
+
     print('2- Desligar motor')
     print('3- Acelerar')
 
