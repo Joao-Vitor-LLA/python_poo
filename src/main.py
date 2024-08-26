@@ -17,7 +17,7 @@ def sim_carro(carro: Carro):
     elif op == 3:
         v = float(input("Informe a velocidade: "))
         t = float(input("Informe o tempo: "))
-        carro.acelerar(v, t)
+        carro.acelerar(v,  t)
     print('Infos atuais do carro')
     print(carro)
 
