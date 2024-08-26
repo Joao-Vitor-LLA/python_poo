@@ -36,7 +36,26 @@ class Eleitor(Pessoa):
         return info
 
     def __repr__(self):
-        return f"Candidato({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}'"
+        return f"Eleitor({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}'"
 
     def get_titulo(self):
         return self.__titulo
+
+class Candidato(Pessoa):
+    _numero: int
+
+    def __init__(self, nome, RG, CPF, numero):
+        super().__init__(nome, RG, CPF)
+        self._numero = numero
+
+    def __str__(self):
+        info = super().__str__()
+        info += (f'Numero: {self._numero}\n')
+        return info
+
+    def __repr__(self):
+        return (f"Candidato({super().__repr__()}, "
+                f"numero={self._numero})")
+
+    def get_numero(self):
+        return self._numero
