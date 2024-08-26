@@ -35,7 +35,7 @@ class Carro:
                 self.__tanque = 0
                 self.__motor_on = False
         else:
-            raise Exception("Erro: Não é possível acelerar! Motor desligado!")
+            raise Exception("Erro:  Não é possível acelerar! Motor desligado!")
 
     def desligar(self):
         if self.__motor_on:
