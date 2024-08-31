@@ -46,8 +46,13 @@ class Eleitor(Pessoa):
     def get_voto(self):
         return self.__voto
 
+    def votar(self, candidato):
+        if self.__voto == candidato.get_numero():
+            candidato.incrementar_votos()
+
 class Candidato(Pessoa):
     _numero: int
+    _votos: int = 0
 
     def __init__(self, nome, RG, CPF, numero):
         super().__init__(nome, RG, CPF)
@@ -55,12 +60,19 @@ class Candidato(Pessoa):
 
     def __str__(self):
         info = super().__str__()
-        info += (f'Numero: {self._numero}\n')
+        info += (f'Numero: {self._numero}\n'
+                 f'Votos: {self._votos}\n')
         return info
 
     def __repr__(self):
         return (f"Candidato({super().__repr__()}, "
-                f"numero={self._numero})")
+                f"numero={self._numero}, votos={self._votos})")
 
     def get_numero(self):
         return self._numero
+
+    def incrementar_votos(self):
+        self._votos += 1
+
+    def get_votos(self):
+        return self._votos
