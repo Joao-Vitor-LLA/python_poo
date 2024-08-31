@@ -13,15 +13,15 @@ def menu_eleitor():
     print("5-Listar Candidatos")
     print("6-Listar Eleitor")
     print("7-Sair")
-    op = int(input("Digite a opcao [1,2,3,4,5,6,7]? "))
+    op = int(input("Digite a opcao [1,2,3,4,5,6,7]: "))
     while op not in (1, 2, 3,4,5,6,7):
-        op = int(input("Digite a opcao [1,2,3,4,5,6,7]? "))
+        op = int(input("Digite a opcao [1,2,3,4,5,6,7]: "))
     return op
 
 def inserir_candidato(candidatos):
-    numero = int(input("Numero do Candidato"))
+    numero = int(input("Numero do Candidato: "))
     if numero in candidatos:
-        raise Exception("Numero já existente")
+        raise Exception("Numero já existente: ")
 
     nome = input("Digite o nome: ")
     RG = input("Digite o RG: ")
@@ -39,6 +39,7 @@ def inserir_eleitor(eleitores):
     CPF = input("Digite o CPF: ")
     secao = input("Digite a secao: ")
     zona = input("Digite a zona: ")
+    voto = int(input("Digite seu voto: "))
 
     with open(FILE_CANDIDATOS, 'wb') as arquivo2:
         pickle.dump(candidatos, arquivo2)
@@ -46,7 +47,7 @@ def inserir_eleitor(eleitores):
     print('Candidato gravado com sucesso!')
     print(candidatos)
 
-    eleitor = Eleitor(nome, RG, CPF, titulo, secao, zona)
+    eleitor = Eleitor(nome, RG, CPF, titulo, secao, zona,voto)
     eleitores[eleitor.get_titulo()] = eleitor
 
     with open(FILE_ELEITORES, 'wb') as arquivo:
@@ -114,7 +115,7 @@ if __name__ == "__main__":
         print("Arquivo nao encontrado, nenhum eleitor carregado!")
 
     opcao = 1
-    while opcao in (1,2,3,4):
+    while opcao in (1,2,3,4,5,6,7):
         try:
             opcao = menu_eleitor()
 

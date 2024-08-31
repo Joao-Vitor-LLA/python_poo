@@ -21,25 +21,30 @@ class Eleitor(Pessoa):
     __titulo : int
     secao : int
     zona : int
+    __voto : int
 
-    def __init__(self, nome, RG, CPF, titulo, secao, zona):
+    def __init__(self, nome, RG, CPF, titulo, secao, zona, voto):
         super().__init__(nome, RG, CPF)
         self.__titulo = titulo
         self.secao = secao
         self.zona = zona
+        self.__voto = voto
 
     def __str__(self):
         info = super().__str__()
         info += (f'Titulo: {self.__titulo}\n'
                  f'Seção: {self.secao}\n'
-                 f'Zona: {self.zona}\n')
+                 f'Zona: {self.zona}\n'
+                 f'Voto: {self.__voto}\n')
         return info
 
     def __repr__(self):
-        return f"Eleitor({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}'"
+        return f"Eleitor({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}',voto='{self.__voto}'"
 
     def get_titulo(self):
         return self.__titulo
+    def get_voto(self):
+        return self.__voto
 
 class Candidato(Pessoa):
     _numero: int
