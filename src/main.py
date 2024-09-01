@@ -1,5 +1,6 @@
 import pickle
 import traceback
+from os import unlink
 from common import *
 
 FILE_ELEITORES = 'eleitores.pkl'
@@ -14,10 +15,11 @@ def menu_eleitor():
     print("6-Listar Eleitor")
     print("7-Votar")
     print("8-Limpar votos")
-    print("9-Sair")
-    op = int(input("Digite a opcao [1,2,3,4,5,6,7,8,9]: "))
-    while op not in (1, 2, 3, 4, 5, 6, 7, 8,9):
-        op = int(input("Digite a opcao [1,2,3,4,5,6,7,8,9]: "))
+    print("9-Remover arquivos")
+    print("10-Sair")
+    op = int(input("Digite a opcao [1,2,3,4,5,6,7,8,9,10]: "))
+    while op not in (1, 2, 3, 4, 5, 6, 7, 8,9,10):
+        op = int(input("Digite a opcao [1,2,3,4,5,6,7,8,9,10]: "))
     return op
 
 def inserir_candidato(candidatos):
@@ -138,6 +140,20 @@ def limpar_votos(candidatos,eleitores):
             pickle.dump(candidatos, arquivo2)
     print("Votos zerados")
 
+def remover_arquivos():
+    try:
+        unlink('eleitores.pkl')
+    except FileNotFoundError as fnfe:
+        print(fnfe)
+        print("Arquivo nao encontrado, nenhum eleitor carregado!")
+
+    try:
+        unlink('candidatos.pkl')
+    except FileNotFoundError as fnfe:
+        print(fnfe)
+        print("Arquivo nao encontrado, nenhum candidato carregado!")
+
+
 
 if __name__ == "__main__":
     eleitores = {}
@@ -159,7 +175,7 @@ if __name__ == "__main__":
         print("Arquivo nao encontrado, nenhum candidato carregado!")
 
     opcao = 1
-    while opcao in (1, 2, 3, 4, 5, 6, 7, 8,9):
+    while opcao in (1, 2, 3, 4, 5, 6, 7, 8,9,10):
         try:
             opcao = menu_eleitor()
 
@@ -188,6 +204,9 @@ if __name__ == "__main__":
                 limpar_votos(candidatos, eleitores)
 
             elif opcao == 9:
+                remover_arquivos()
+
+            elif opcao == 10:
                 print("Saindo!")
                 break
         except Exception as e:
