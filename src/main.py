@@ -100,7 +100,7 @@ def votar(eleitores, candidatos):
     titulo = int(input("Digite o título do eleitor: "))
     if titulo in eleitores:
         eleitor = eleitores[titulo]
-        print(f"Eleitor encontrado: {eleitor}")
+        print(f"Eleitor encontrado: {eleitor.get_nome()}")
 
         voto = int(input("Digite o número do candidato: "))
         if voto in candidatos:
@@ -113,14 +113,14 @@ def votar(eleitores, candidatos):
             with open(FILE_CANDIDATOS, 'wb') as arquivo2:
                 pickle.dump(candidatos, arquivo2)
 
-            print(f"Voto registrado para {candidato}")
+            print(f"Voto registrado para {candidato.get_nome()}")
         else:
             print("Candidato não encontrado.")
     else:
         print("Eleitor não encontrado.")
 
 if __name__ == "__main__":
-    eleitores = {}  # dicionário, a chave será o título
+    eleitores = {}
     try:
         print("Carregando arquivo de eleitores ...")
         with open(FILE_ELEITORES, 'rb') as arquivo:

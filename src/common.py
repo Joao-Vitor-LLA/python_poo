@@ -17,11 +17,14 @@ class Pessoa:
     def __repr__(self):
         return f"Pessoa(nome='{self.__nome}', RG='{self.__RG}', CPF='{self.__CPF}')"
 
+    def get_nome(self):
+        return self.__nome
+
 class Eleitor(Pessoa):
-    __titulo : int
-    secao : int
-    zona : int
-    __voto : int
+    __titulo: int
+    secao: int
+    zona: int
+    __voto: int
 
     def __init__(self, nome, RG, CPF, titulo, secao, zona, voto):
         super().__init__(nome, RG, CPF)
@@ -39,16 +42,18 @@ class Eleitor(Pessoa):
         return info
 
     def __repr__(self):
-        return f"Eleitor({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}',voto='{self.__voto}'"
+        return f"Eleitor({super().__repr__()}, titulo='{self.__titulo}', secao='{self.secao}', zona='{self.zona}', voto='{self.__voto}'"
 
     def get_titulo(self):
         return self.__titulo
+
     def get_voto(self):
         return self.__voto
 
     def votar(self, candidato):
-        if self.__voto == candidato.get_numero():
-            candidato.incrementar_votos()
+        candidato.incrementar_votos()
+        self.__voto = candidato.get_numero()
+
 
 class Candidato(Pessoa):
     _numero: int
