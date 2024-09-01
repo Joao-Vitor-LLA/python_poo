@@ -20,6 +20,7 @@ class Pessoa:
     def get_nome(self):
         return self.__nome
 
+
 class Eleitor(Pessoa):
     __titulo: int
     secao: int

@@ -138,6 +138,7 @@ def limpar_votos(candidatos,eleitores):
             pickle.dump(candidatos, arquivo2)
     print("Votos zerados")
 
+
 if __name__ == "__main__":
     eleitores = {}
     try:
