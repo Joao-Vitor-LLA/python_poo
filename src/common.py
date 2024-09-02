@@ -82,3 +82,4 @@ class Candidato(Pessoa):
 
     def get_votos(self):
         return self._votos
+
