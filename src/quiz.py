@@ -1,6 +1,6 @@
 from typing import List
 
-class Quiz:
+class Quiz: #Classe pai
 
     __acertos : int
     __erros: int
@@ -21,21 +21,21 @@ class Quiz:
         out = f'Acertos: {self.__acertos} Erros: {self.__erros} Pontos: {self.calcular_pontos()}'
         return out
 
-class Quiz2A(Quiz):
+class Quiz2A(Quiz): #Classe filho
     def __init__(self, __acertos, __erros):
         super().__init__(__acertos, __erros)
 
     def caucular_pontos(self):
         return self.get_acertos() - (4 * self.get_erros())
 
-class Quiz3A(Quiz):
+class Quiz3A(Quiz): #Classe filho
     def __init__(self, __acertos, __erros):
         super().__init__( __acertos, __erros)
 
     def caucular_pontos(self):
         return self.get_acertos() - (2 * self.get_erros())
 
-class Aluno:
+class Aluno: #Composição de Quiz
     __maticula : int
     __aluno : str
     __quizes : List[Quiz]
@@ -53,7 +53,7 @@ class Aluno:
         out += f'Pontos Totais = {pt}'
         return out
 
-class Disciplina:
+class Disciplina: #Agregação de Alunos
     __nome : str
     __professor : str
     __ano : int
